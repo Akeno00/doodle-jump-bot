@@ -9,6 +9,7 @@
 </head>
 <body>
   <div id="ui-overlay">
+
     <!-- Стартовый экран -->
     <div id="screen-start" class="screen active">
       <div class="logo">
@@ -20,13 +21,11 @@
         Рекорд: <span id="best-score-display">0</span>
       </div>
       <button id="btn-start" class="btn-primary">▶ Играть</button>
-      <div class="controls-hint">
-        <span>◀ ▶ — движение</span>
-        <span>На мобиле — наклон</span>
-      </div>
+      <button id="btn-open-lb" class="btn-secondary">🏆 Таблица рекордов</button>
+      <div class="controls-hint">◀ ▶ — движение (кнопки на экране)</div>
     </div>
 
-    <!-- Экран игры -->
+    <!-- Экран игры (только HUD) -->
     <div id="screen-game" class="screen">
       <div id="hud">
         <span id="score-label">Счёт: <b id="current-score">0</b></span>
@@ -47,20 +46,37 @@
           <span id="final-best" class="highlight">0</span>
         </div>
         <div id="new-record-badge" class="badge hidden">🏆 Новый рекорд!</div>
+        <div class="name-row">
+          <input type="text" id="name-input" class="name-input" placeholder="Твоё имя" maxlength="16" />
+          <button id="btn-save-score" class="btn-save">💾</button>
+        </div>
+        <div id="save-ok" class="save-ok hidden">✓ Сохранено</div>
         <button id="btn-restart" class="btn-primary">🔄 Ещё раз</button>
-        <button id="btn-menu" class="btn-secondary">🏠 Меню</button>
+        <div class="row-btns">
+          <button id="btn-menu" class="btn-secondary">🏠 Меню</button>
+          <button id="btn-lb-go" class="btn-secondary">🏆 Рекорды</button>
+        </div>
       </div>
     </div>
+
+    <!-- Таблица рекордов -->
+    <div id="screen-leaderboard" class="screen">
+      <div class="lb-box">
+        <h2>🏆 Таблица рекордов</h2>
+        <div id="lb-list"></div>
+        <button id="btn-lb-back" class="btn-secondary">← Назад</button>
+      </div>
+    </div>
+
   </div>
 
   <!-- Мобильные кнопки управления -->
   <div id="mobile-controls">
-    <button id="btn-left" class="ctrl-btn">◀</button>
+    <button id="btn-left"  class="ctrl-btn">◀</button>
     <button id="btn-right" class="ctrl-btn">▶</button>
   </div>
 
   <canvas id="game-canvas"></canvas>
-
   <script src="game.js"></script>
 </body>
 </html>
